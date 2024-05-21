@@ -9,15 +9,18 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { IngresarComponent } from './ingresar/ingresar.component';
-
-
-
+import { PanelComponent } from './panel/panel.component';
+import { AgregarComponent } from './panel/agregar.component';
+import { EditarComponent } from './panel/editar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta vacía redirige al home
   { path: 'home', component: HomeComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'ingresar', component: IngresarComponent },
+  { path: 'panel', component: PanelComponent },
+  { path: 'agregar', component: AgregarComponent },
+  { path: 'editar', component: EditarComponent },
   { path: '**', redirectTo: 'home' } // Cualquier otra ruta redirige al home
 ];
 
@@ -28,7 +31,11 @@ const routes: Routes = [
     HeaderComponent,
     HomeComponent,
     ContactoComponent,
-    IngresarComponent
+    IngresarComponent,
+    PanelComponent,
+    AgregarComponent,
+    EditarComponent,
+
   ],
   imports: [
     BrowserModule,

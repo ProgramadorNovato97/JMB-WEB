@@ -1,0 +1,85 @@
+<!--Migas de pan-->
+<small>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Panel</li>
+        </ol>
+    </nav>
+</small>
+
+<!-- Boton para agregar acuerdos-->
+<div class="row mb-2">
+    <div class="col-3">
+        <button title="Agregar usuario" type="button" class="btn btn-dark" routerLink="/agregar"><i class="fa-solid fa-circle-plus"></i> Agregar </button>
+    </div>
+</div>
+
+
+<!--Listado de datos dataTable-->
+<div class="border rounded-2 p-1">
+    <table id="" class="table table-sm pt-1">
+        <thead class="table-info ">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Dni</th>
+                <th scope="col">Interno</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody class="small">
+            <tr>
+                <th scope="row">1</th>
+                <td>Elias</td>
+                <td>Cuiza</td>
+                <td>12345678</td>
+                <td>86</td>
+                <td>jmb.com</td>
+                <td><button (click)="ver()" title="Ver más" class="btn btn-outline-primary btn-sm"><i
+                            class="fa-solid fa-circle-info"></i></button> - <button routerLink="/editar" title="Editar"
+                        class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Gato</td>
+                <td>Romero</td>
+                <td>12345678</td>
+                <td>141</td>
+                <td>jmb.com</td>
+                <td><button (click)="ver()" title="Ver más" class="btn btn-outline-primary btn-sm"><i
+                            class="fa-solid fa-circle-info"></i></button> - <button routerLink="/editar" title="Editar"
+                        class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Roberto</td>
+                <td>Monaldi</td>
+                <td>12345678</td>
+                <td>52</td>
+                <td>jmb.com</td>
+                <td><button (click)="ver()" title="Ver más" class="btn btn-outline-primary btn-sm"><i
+                            class="fa-solid fa-circle-info"></i></button> - <button routerLink="/editar" title="Editar"
+                        class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Mosca</td>
+                <td>acsom</td>
+                <td>12345678</td>
+                <td>88</td>
+                <td>jmb.com</td>
+                <td><button (click)="ver()" title="Ver más" class="btn btn-outline-primary btn-sm"><i
+                            class="fa-solid fa-circle-info"></i></button> - <button routerLink="/editar" title="Editar"
+                        class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<!--Fin dataTable -->
