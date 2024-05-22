@@ -2,7 +2,7 @@
 
 export const environment = {
   production: true,
-  base_url: 'http://localhost:3000/api', // ---------------
+  // base_url: 'http://localhost:3000/api', // ---------------
   firebaseConfig: {
     apiKey: "AIzaSyDt0Q68Qv9ER11Qdxa5hpsfdFb2wX9zh9M",
     authDomain: "jmb-app-6e385.firebaseapp.com",

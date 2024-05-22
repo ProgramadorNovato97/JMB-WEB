@@ -13,6 +13,10 @@ import { PanelComponent } from './panel/panel.component';
 import { AgregarComponent } from './panel/agregar.component';
 import { EditarComponent } from './panel/editar.component';
 
+//====== Firebase ======
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from './core/environment/environment';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta vacía redirige al home
   { path: 'home', component: HomeComponent },
@@ -35,12 +39,12 @@ const routes: Routes = [
     PanelComponent,
     AgregarComponent,
     EditarComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes), 
+    AngularFireModule.initializeApp(environment.firebaseConfig),// Inicializamos firebase
 
   ],
   providers: [
