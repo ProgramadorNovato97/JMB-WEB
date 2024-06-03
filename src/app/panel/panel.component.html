@@ -10,39 +10,45 @@
 <!-- Boton para agregar acuerdos-->
 <div class="row">
     <div class="col-2">
-        <button title="Agregar usuario" type="button" class="btn btn-dark" routerLink="/agregar"><i
-                class="fa-solid fa-circle-plus"></i> Agregar </button>
+        <button title="Agregar usuario" type="button" class="btn btn-dark" data-bs-toggle="modal"
+            data-bs-target="#usuarioModal">
+            <i class="fa-solid fa-circle-plus"></i> Agregar </button>
     </div>
     <div class="col-2">
-        <button (click)="obtenerUsuarios()" title="Agregar usuario" type="button" class="btn btn-primary"><i class="fa-solid fa-rotate"></i> Actualizar
+        <button (click)="obtenerUsuarios()" title="Agregar usuario" type="button" class="btn btn-primary"><i
+                class="fa-solid fa-rotate"></i> Actualizar
         </button>
     </div>
 </div>
-
 <!--Listado de datos dataTable-->
-<div class="border rounded-2 p-1">
+<div class="border rounded-2 p-1 mt-1">
     <table id="" class="table table-sm pt-1">
         <thead class="table-info ">
             <tr>
-                <th scope="col">DNI</th>
+                <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th scope="col">Dni</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Clave</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody class="small">
-            <tr *ngFor="let item of usuarios">
+            <tr *ngFor="let item of usuarios; let i = index"><!--Index me dice la posición del recorriddo-->
+                <td>{{i+1}}</td>
                 <td>{{item.id}}</td>
+                <td>{{item.data.dni}}</td>
                 <td>{{item.data.nombre}}</td>
                 <td>{{item.data.apellidos}}</td>
-                <td>user123</td>
+                <td>usuario{{i}}</td>
                 <td>{{item.data.clave}}</td>
+                <td>{{item.data.estado}}</td>
 
-                <td><button (click)="ver()" title="Ver más" class="btn btn-outline-primary btn-sm"><i
-                            class="fa-solid fa-circle-info"></i></button> - <button routerLink="/editar" title="Editar"
-                        class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                <td><button title="Editar" class="btn btn-outline-success btn-sm"><i
+                            class="fa-solid fa-pencil"></i></button>
                 </td>
             </tr>
 
@@ -50,3 +56,106 @@
     </table>
 </div>
 <!--Fin dataTable -->
+
+
+
+
+<!-- Modal Agregar -->
+<div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="usuarioModalLabel"><i class="fa-solid fa-circle-user"></i> Datos del usuario
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form [formGroup]="agregarForm" (submit)="Guardar()">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="dni" class="form-label">Dni:</label>
+                            <input type="number" class="form-control" formControlName="dni" id="dni" required>
+                            <div class="text-danger"
+                                *ngIf="agregarForm.controls['dni'].invalid && (agregarForm.controls['dni'].touched || agregarForm.controls['dni'].dirty)">
+                                <small>
+                                    <span *ngIf="agregarForm.controls['dni'].errors?.['dni']">Dni no
+                                        puede estar
+                                        vacio.</span>
+                                    <span *ngIf="agregarForm.controls['dni'].errors?.['pattern']"> Ingrese un
+                                        dni
+                                        valido.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="nombre" required>
+                            <div class="text-danger"
+                                *ngIf="agregarForm.controls['nombre'].invalid && (agregarForm.controls['nombre'].touched || agregarForm.controls['nombre'].dirty)">
+                                <small><span *ngIf="agregarForm.controls['nombre'].errors?.['required']">Ingrese un
+                                        nombre.</span></small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="apellidos" class="form-label">Apellidos:</label>
+                            <input type="text" class="form-control" formControlName="apellidos" id="apellidos" required>
+                            <div class="text-danger"
+                                *ngIf="agregarForm.controls['apellidos'].invalid && (agregarForm.controls['apellidos'].touched || agregarForm.controls['apellidos'].dirty)">
+                                <small><span *ngIf="agregarForm.controls['apellidos'].errors?.['required']">Ingrese
+                                        apellidos.</span></small>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-6">
+                            <label for="" class="form-label">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" id="">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Dirección:</label>
+                            <input type="text" class="form-control" id="">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Interno:</label>
+                            <input type="text" class="form-control" id="">
+                        </div> -->
+
+
+                        <div class="col-6">
+                            <label for="clave" class="form-label">Clave:</label>
+                            <input type="password" class="form-control" formControlName="clave" id="clave" required>
+                            <div class="text-danger"
+                                *ngIf="agregarForm.controls['clave'].invalid && (agregarForm.controls['clave'].touched || agregarForm.controls['clave'].dirty)">
+                                <small><span *ngIf="agregarForm.controls['clave'].errors?.['required']">Ingrese
+                                        clave.</span></small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select class="form-select" formControlName="estado" id="estado" required>
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                            <div class="text-danger"
+                                *ngIf="agregarForm.controls['estado'].invalid && (agregarForm.controls['estado'].touched || agregarForm.controls['estado'].dirty)">
+                                <small><span *ngIf="agregarForm.controls['estado'].errors?.['required']">Seleccione
+                                        estado.</span></small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"> Guardar datos<i
+                            class="fa-solid fa-plus"></i></button>
+                    <button type="button" (click)="resetForm()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar <i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

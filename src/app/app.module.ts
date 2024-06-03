@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms'; //
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,8 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { IngresarComponent } from './ingresar/ingresar.component';
 import { PanelComponent } from './panel/panel.component';
-import { AgregarComponent } from './panel/agregar.component';
-import { EditarComponent } from './panel/editar.component';
+;
 
 //====== Firebase ======
 import { AngularFireModule } from '@angular/fire/compat';
@@ -23,8 +23,7 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'ingresar', component: IngresarComponent },
   { path: 'panel', component: PanelComponent },
-  { path: 'agregar', component: AgregarComponent },
-  { path: 'editar', component: EditarComponent },
+
   { path: '**', redirectTo: 'home' } // Cualquier otra ruta redirige al home
 ];
 
@@ -37,13 +36,12 @@ const routes: Routes = [
     ContactoComponent,
     IngresarComponent,
     PanelComponent,
-    AgregarComponent,
-    EditarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes), 
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),// Inicializamos firebase
 
   ],

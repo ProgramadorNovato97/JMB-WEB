@@ -5,13 +5,13 @@
 
   }
   .imagen-oscura {
-    filter: brightness(0.6); /* Cambia el valor según lo oscuro que quieras la imagen */
+    filter: brightness(0.7); /* Cambia el valor según lo oscuro que quieras la imagen */
   }
   .text-container {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-10%, -10%);
+    transform: translate(-10%, 10%);
     text-align: justify;
     color: rgb(255, 255, 255);
     /* Opcional: Estilos adicionales para el texto */
