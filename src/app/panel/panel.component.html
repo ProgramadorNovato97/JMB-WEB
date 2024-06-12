@@ -64,13 +64,13 @@
 
 
 <!-- Modal Agregar -->
-<div class="modal fade" #usuarioModal id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="usuarioModalLabel"><i class="fa-solid fa-circle-user"></i> Datos del usuario
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #cerrarModal ></button>
             </div>
 
             <form [formGroup]="agregarForm" (submit)="Guardar()">
@@ -156,7 +156,6 @@
                             class="fa-regular fa-circle-check"></i></button>
                     <button type="button" (click)="resetForm()" class="btn btn-secondary"
                         data-bs-dismiss="modal">Cancelar <i class="fa-solid fa-xmark"></i></button>
-                        <button type="button" (click)="cerrarModal()" class="btn btn-dark">aaa</button>
                 </div>
             </form>
 

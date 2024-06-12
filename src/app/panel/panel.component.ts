@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular
 import { UsuarioService } from '../services/usuario.service';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators, } from '@angular/forms';
-import { BootstrapOptions } from '@angular/core';
+
 
 
 
@@ -54,6 +54,7 @@ export class PanelComponent implements OnInit {
       .agregarUsuario(this.agregarForm.value)//
       .then((respuesta) => {
         if (respuesta === true) {
+          this.cerrarModal.nativeElement.click();
           this.obtenerUsuarios();
           Swal.fire({
             text: "Usuario AGREGADO correctamente!",
@@ -110,10 +111,6 @@ export class PanelComponent implements OnInit {
   // }
 
 
-  cerrarModal(){
-  
- }
-
 
 
 
@@ -130,13 +127,14 @@ export class PanelComponent implements OnInit {
 
   }
 
+
+  @ViewChild('cerrarModal') cerrarModal!: ElementRef;
   editarUsuario() {
     this.UsuarioServ
       .editar(this.agregarForm.value, this.agregarForm.value.id)
       .then((res) => {
         if (res === true) {
-
-
+          this.cerrarModal.nativeElement.click();
           this.obtenerUsuarios();
           Swal.fire({
             text: "Usuario MODIFICADO correctamente!",
