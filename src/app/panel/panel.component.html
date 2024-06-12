@@ -47,8 +47,11 @@
                 <td>{{item.data.clave}}</td>
                 <td>{{item.data.estado}}</td>
 
-                <td><button title="Editar" class="btn btn-outline-success btn-sm"><i
-                            class="fa-solid fa-pencil"></i></button>
+                <td>
+                    <button title="Editar usuario" type="button" (click)="completarCampos(item)" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#usuarioModal" >
+                        <i class="fa-solid fa-pen-to-square"></i></button> - <button title="Eliminar usuario"
+                        type="button" class="btn btn-outline-danger"  (click)="eliminarUsuario(item)"><i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
 
@@ -61,7 +64,7 @@
 
 
 <!-- Modal Agregar -->
-<div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" #usuarioModal id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -149,10 +152,11 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"> Guardar datos<i
-                            class="fa-solid fa-plus"></i></button>
-                    <button type="button" (click)="resetForm()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar <i
-                            class="fa-solid fa-xmark"></i></button>
+                    <button type="submit" class="btn btn-success">Guardar datos <i
+                            class="fa-regular fa-circle-check"></i></button>
+                    <button type="button" (click)="resetForm()" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancelar <i class="fa-solid fa-xmark"></i></button>
+                        <button type="button" (click)="cerrarModal()" class="btn btn-dark">aaa</button>
                 </div>
             </form>
 
